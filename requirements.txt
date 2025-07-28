@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+pytest
+pytest-cov
+flake8
+black
+mypy
