@@ -3,10 +3,13 @@ from pydantic import BaseModel, Field
 from statistics import mean, median
 from collections import Counter
 
+
 app = FastAPI()
+
 
 class Numbers(BaseModel):
     numbers: list[float] = Field(..., example=[1, 2, 3])
+
 
 @app.post("/stats")
 def get_stats(numbers: Numbers):

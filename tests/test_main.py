@@ -13,6 +13,7 @@ def test_stats_valid():
     assert data["median"] == 2.0
     assert data["mode"] == 2
 
+
 def test_stats_no_unique_mode():
     response = client.post("/stats", json={"numbers": [1, 2, 3]})
     assert response.status_code == 400
