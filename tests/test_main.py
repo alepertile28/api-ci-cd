@@ -14,6 +14,6 @@ def teste_stats_valid():
     assert data["mode"] == 1
 
 def test_stats_no_unique_mode():
-    response = client.post("/stats", json={"values": [1, 2, 3,]})
+    response = client.post("/stats", json={"values": [1, 2, 3]})
     assert response.status_code == 400
     assert response.json()["detail"] == "No unique mode found"
