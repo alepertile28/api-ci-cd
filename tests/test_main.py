@@ -5,7 +5,15 @@ from app.main import app
 client = TestClient(app)
 
 
-def test_get_tasks():
-    response = client.get("/tasks")
+def teste_stats_valid():
+    response = client.post("/stats", json={"numbers": [1, 2, 3, 4, 5]})
     assert response.status_code == 200
-    assert isinstance(response.json(), list)
+    data = response.json()
+    assert data["mean"] == 2.4
+    assert data["median"] == 2
+    assert data["mode"] == 2
+
+def test_stats_no_unique_mode():
+    response = client.post("/stats", json={"values": [1, 2, 3,]})
+    assert response.status_code == 400
+    assert response.json()["detail"] == "No unique mode found"

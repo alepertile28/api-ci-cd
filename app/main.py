@@ -1,15 +1,21 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from statistics import mean, median, mode, StatisticsError
 
 
 app = FastAPI()
 
 
-tasks = [
-    {"id": 1, "task": "Learn Python"},
-    {"id": 2, "task": "Write CI/CD pipelines"},
-]
+class Numbers(BaseModel):
+    numbers: list[float]
 
-
-@app.get("/tasks")
-async def get_tasks():
-    return tasks
+@app.post("/stats")
+def get_stats(data: Numbers):
+    try:
+        return {
+            "mean": mean(data.numbers),
+            "median": median(data.numbers),
+            "mode": mode(data.numbers)
+        }
+    except StatisticsError:
+        return HTTPException(status_code=400, detail="No unique mode found")
