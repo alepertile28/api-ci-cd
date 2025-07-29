@@ -11,12 +11,13 @@ class Numbers(BaseModel):
     numbers: list[float] = Field(..., example=[1, 2, 3])
 
 @app.post("/stats")
-def get_stats(payload: Numbers):
+def get_stats(numbers: Numbers):
     try:
+        values = numbers.numbers
         return {
-            "mean": mean(payload.values),
-            "median": median(payload.values),
-            "mode": mode(payload.values)
+            "mean": mean(values),
+            "median": median(values),
+            "mode": mode(values)
         }
     except StatisticsError:
         return HTTPException(status_code=400, detail="No unique mode found")
