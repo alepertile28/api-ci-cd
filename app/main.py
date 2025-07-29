@@ -20,4 +20,4 @@ def get_stats(numbers: Numbers):
             "mode": mode(values)
         }
     except StatisticsError:
-        return HTTPException(status_code=400, detail="No unique mode found")
+        raise HTTPException(status_code=400, detail="No unique mode found")

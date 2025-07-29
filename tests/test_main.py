@@ -5,7 +5,7 @@ from app.main import app
 client = TestClient(app)
 
 
-def teste_stats_valid():
+def test_stats_valid():
     response = client.post("/stats", json={"numbers": [1, 2, 2, 3]})
     assert response.status_code == 200
     data = response.json()
