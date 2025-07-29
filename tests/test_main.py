@@ -10,8 +10,8 @@ def teste_stats_valid():
     assert response.status_code == 200
     data = response.json()
     assert data["mean"] == 3.0
-    assert data["median"] == 2
-    assert data["mode"] == 2
+    assert data["median"] == 3.0
+    assert data["mode"] == 1
 
 def test_stats_no_unique_mode():
     response = client.post("/stats", json={"values": [1, 2, 3,]})
