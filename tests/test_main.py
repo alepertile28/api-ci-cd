@@ -9,7 +9,7 @@ def teste_stats_valid():
     response = client.post("/stats", json={"numbers": [1, 2, 3, 4, 5]})
     assert response.status_code == 200
     data = response.json()
-    assert data["mean"] == 2.4
+    assert data["mean"] == 3.0
     assert data["median"] == 2
     assert data["mode"] == 2
 
