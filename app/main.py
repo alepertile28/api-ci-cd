@@ -21,8 +21,4 @@ def get_stats(numbers: Numbers):
     if len(modes) != 1:
         raise HTTPException(status_code=400, detail="No unique mode found")
 
-    return {
-        "mean": mean(values),
-        "median": median(values),
-        "mode": modes[0]
-    }
+    return {"mean": mean(values), "median": median(values), "mode": modes[0]}
