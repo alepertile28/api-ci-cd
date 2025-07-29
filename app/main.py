@@ -1,7 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from statistics import mean, median
-from typing import List
 from collections import Counter
 
 app = FastAPI()
