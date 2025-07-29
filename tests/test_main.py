@@ -6,7 +6,7 @@ client = TestClient(app)
 
 
 def teste_stats_valid():
-    response = client.post("/stats", json={"numbers": [1, 2, 2, 3]})
+    response = client.post("/stats", json={"values": [1, 2, 2, 3]})
     assert response.status_code == 200
     data = response.json()
     assert data["mean"] == 2.0
