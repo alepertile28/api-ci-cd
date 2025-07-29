@@ -6,12 +6,12 @@ client = TestClient(app)
 
 
 def teste_stats_valid():
-    response = client.post("/stats", json={"numbers": [1, 2, 3, 4, 5]})
+    response = client.post("/stats", json={"numbers": [1, 2, 2, 3]})
     assert response.status_code == 200
     data = response.json()
-    assert data["mean"] == 3.0
-    assert data["median"] == 3.0
-    assert data["mode"] == 1
+    assert data["mean"] == 2.0
+    assert data["median"] == 2.0
+    assert data["mode"] == 2
 
 def test_stats_no_unique_mode():
     response = client.post("/stats", json={"values": [1, 2, 3]})
