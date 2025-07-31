@@ -102,9 +102,6 @@ Content-Type: application/json
 ```
 ### Resposta
 ```http
-POST /stats 
-Content-Type: application/json
-
 {
     "mean": 2.0,
     "median": 2.0,
