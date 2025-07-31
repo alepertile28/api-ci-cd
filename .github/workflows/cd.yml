@@ -23,7 +23,7 @@ jobs:
     
     - name: Trigger Terraform Redeploy
       if: github.ref =='refs/heads/main'
-      uses: peter-evans/workflow-dispatch@v3
+      uses: peter-evans/repository-dispatch@v3
       with:
         token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
         repository: alepertile28/aws-terraform-lab
