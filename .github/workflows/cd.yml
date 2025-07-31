@@ -20,3 +20,11 @@ jobs:
 
     - name: Push docker image
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/stats-api:latest
+    
+    - name: Trigger Terraform Redeploy
+      if: github.ref =='refs/heads/main'
+      uses: peter-evans/workflow-dispatch@v2
+      with:
+        token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+        repository: alepertile28/aws-terraform-lab
+        event-type: docker-image-updated
